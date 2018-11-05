@@ -40,10 +40,35 @@ update_status ModuleCamera3D::Update()
 	// OnKeys WASD keys -----------------------------------
 
 	// TODO 3: Make the camera go up/down when pressing R (up) F(down)
+	if (App->input->GetKey(SDL_SCANCODE_R) == KEY_REPEAT)
+	{
+		App->camera->Position.y += 0.1f;
+		App->camera->Reference.y += 0.1f;
+	}
 
+	if (App->input->GetKey(SDL_SCANCODE_F) == KEY_REPEAT)
+	{
+		App->camera->Position.y -= 0.1f;
+		App->camera->Reference.y -= 0.1f;
+	}
 	// TODO 4: Make the camera go forward (w) and backward with (s)
 	// Note that the vectors X/Y/Z contain the current axis of the camera
 	// you can read them to modify Position
+	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT)
+	{
+		/*vec3 forward = { 0.1f,0.0f,0.0f };
+		vec3* forwrd_pointer = &forward;
+		App->camera->Position.x = forward_pointer * App->camera->X;*/
+		App->camera->Z;
+		App->camera->Position.y += 0.1f;
+		App->camera->Reference.y += 0.1f;
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT)
+	{
+		App->camera->Position.y -= 0.1f;
+		App->camera->Reference.y -= 0.1f;
+	}
 
 	// TODO 5: Make the camera go left (a) and right with (d)
 	// Note that the vectors X/Y/Z contain the current axis of the camera
