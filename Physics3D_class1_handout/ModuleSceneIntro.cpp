@@ -20,6 +20,11 @@ bool ModuleSceneIntro::Start()
 	// experiment with different camera placements, then use LookAt()
 	// to make it look at the center
 
+	App->camera->Position.x = 1;
+	App->camera->Position.y = 1;
+	vec3 center = {0,0,0};
+	App->camera->LookAt(center);
+
 	return ret;
 }
 
@@ -38,7 +43,7 @@ update_status ModuleSceneIntro::Update()
 	// so you have to express the normal of the plane to create 
 	// a plane centered around 0,0. Make that it draw the axis for reference
 
-	Plane terrain_plane(10.0f,10.0f,10.0f,10.0f);
+	Plane terrain_plane(1.0f,1.0f,1.0f,1.0f);
 	terrain_plane.axis = (1.0f, 1.0f, 1.0f);
 	//terrain_plane.normal = normalize( terrain_plane.axis);
 	terrain_plane.SetPos(0.0f,0.0f,0.0f);
