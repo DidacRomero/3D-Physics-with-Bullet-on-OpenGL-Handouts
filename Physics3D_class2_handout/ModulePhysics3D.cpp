@@ -5,6 +5,15 @@
 
 // TODO 1: ...and the 3 libraries based on how we compile (Debug or Release)
 // use the _DEBUG preprocessor define
+#ifdef _DEBUG
+#pragma comment( lib, "Bullet/libx86/BulletCollision_debug.lib" )
+#pragma comment( lib, "Bullet/libx86/BulletDynamics_debug.lib" )
+#pragma comment( lib, "Bullet/libx86/LinearMath_debug.lib" )
+#else
+#pragma comment( lib, "Bullet/libx86/BulletCollision.lib" )
+#pragma comment( lib, "Bullet/libx86/BulletDynamics.lib" )
+#pragma comment( lib, "Bullet/libx86/LinearMath.lib" )
+#endif
 
 ModulePhysics3D::ModulePhysics3D(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -14,6 +23,12 @@ ModulePhysics3D::ModulePhysics3D(Application* app, bool start_enabled) : Module(
 	// TODO 2: Create collision configuration, dispacher
 	// broad _phase and solver
 
+	default_collision_configuration = new btDefaultCollisionConfiguration();
+	impulse_constraint_solver = new btSequentialImpulseConstraintSolver();
+	broad_phase_collision = new btDbvtBroadphase();
+	collision_dispatcher = new btCollisionDispatcher(default_collision_configuration);
+
+	world = new btDiscreteDynamicsWorld(collision_dispatcher, broad_phase_collision, impulse_constraint_solver, default_collision_configuration = new btDefaultCollisionConfiguration());
 	// Uncomment this to enable debug drawer
 	//debug_draw = new DebugDrawer();
 }

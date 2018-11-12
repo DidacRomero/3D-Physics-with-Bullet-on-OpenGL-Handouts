@@ -6,15 +6,7 @@
 #include "Bullet/include/btBulletDynamicsCommon.h"
 
 // TODO 1: Add Bullet common include btBulletDynamicsCommon.h
-#ifdef _DEBUG
-#pragma comment( lib, "Bullet/libx86/BulletCollision_debug.lib" )
-#pragma comment( lib, "Bullet/libx86/BulletDynamics_debug.lib" )
-#pragma comment( lib, "Bullet/libx86/LinearMath_debug.lib" )
-#else
-#pragma comment( lib, "Bullet/libx86/BulletCollision.lib" )
-#pragma comment( lib, "Bullet/libx86/BulletDynamics.lib" )
-#pragma comment( lib, "Bullet/libx86/LinearMath.lib" )
-#endif
+
 
 class DebugDrawer;
 
@@ -35,6 +27,16 @@ private:
 	bool debug;
 
 	DebugDrawer* debug_draw;
+
+	//btDynamicsWorld dynamics_world;
+	//btCollisionWorld collision_world;
+
+	btCollisionDispatcher* collision_dispatcher;
+	btDefaultCollisionConfiguration* default_collision_configuration;
+	btSequentialImpulseConstraintSolver* impulse_constraint_solver;
+	btDbvtBroadphase* broad_phase_collision;
+
+	btDiscreteDynamicsWorld* world;
 };
 
 /*
