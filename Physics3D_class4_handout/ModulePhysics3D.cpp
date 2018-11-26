@@ -217,9 +217,6 @@ void ModulePhysics3D::AddConstraintP2P(PhysBody3D & bodyA, PhysBody3D & bodyB, c
 	btTypedConstraint* p2pConstraint = new btPoint2PointConstraint (rbA, rbB, anchorVecA, anchorVecB);
 	constraints_list.add(p2pConstraint);
 	world->addConstraint(p2pConstraint);
-
-
-
 }
 
 // ---------------------------------------------------------
