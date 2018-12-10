@@ -22,13 +22,13 @@ bool ModulePlayer::Start()
 
 	// Car properties ----------------------------------------
 	car.chassis_size.Set(2, 1, 4);
-	car.chassis_offset.Set(0, 1.5, 0);
+	car.chassis_offset.Set(0, 0.75, 0);
 	car.mass = 500.0f;
-	car.suspensionStiffness = 60.88f; // Was 15.88f
+	car.suspensionStiffness = 15.88f; // Was 15.88f
 	car.suspensionCompression = 0.83f;
-	car.suspensionDamping = 0.88f;
+	car.suspensionDamping = 0.44f;
 	car.maxSuspensionTravelCm = 1000.0f;
-	car.frictionSlip = 1000.5; //Was 50.5
+	car.frictionSlip = 8.5; //Was 50.5
 	car.maxSuspensionForce = 6000.0f;
 
 	// Wheel properties ---------------------------------------
@@ -138,8 +138,10 @@ update_status ModulePlayer::Update(float dt)
 		vehicle->vehicle->setBrake(false,0);
 		vehicle->vehicle->setBrake(false, 1);
 		//vehicle->vehicle.
-		vehicle->info.frictionSlip = 0.000000001;
-		brake = HANDBRAKE_POWER * 0.1;
+		vehicle->info.frictionSlip = 0;
+
+	
+       		brake = HANDBRAKE_POWER;
 	}
 	else if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_UP)
 	{
